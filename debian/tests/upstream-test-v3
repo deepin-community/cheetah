@@ -1,0 +1,17 @@
+#!/bin/sh
+
+set -e
+
+cp Cheetah/Tests/Test.py "$AUTOPKGTEST_TMP"
+
+# create symlinks, upstream code isn't aware of the util renaming used to
+# prevent filename collision between python-cheetah and python3-cheetah
+ln -s /usr/bin/cheetah-analyze3 /usr/bin/cheetah-analyze
+ln -s /usr/bin/cheetah-compile3 /usr/bin/cheetah-compile
+ln -s /usr/bin/cheetah3 /usr/bin/cheetah
+
+for py in $(py3versions -s 2>/dev/null); do
+	cd "$AUTOPKGTEST_TMP"
+	echo "Running upstream Test.py with $py:"
+	$py Test.py
+done

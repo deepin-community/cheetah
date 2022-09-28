@@ -1,0 +1,5 @@
+# match only final releases, ignore alpha/beta/rc
+version=4
+# gitmode=full to work around #896705, #907775, #910709, ...
+opts=mode=git,gitmode=full,pgpmode=gittag \
+ https://github.com/CheetahTemplate3/cheetah3 refs/tags/v?(\d[\d\.]*) debian

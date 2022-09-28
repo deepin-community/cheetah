@@ -1,0 +1,70 @@
+Source: cheetah
+Section: python
+Priority: optional
+Maintainer: Jeroen Ploemen <jcfp@debian.org>
+Uploaders: Debian Python Team <team+python@tracker.debian.org>
+Build-Depends:
+ debhelper-compat (= 13),
+ dh-sequence-python3,
+ python3-all-dev,
+ python3-markdown <!nocheck>,
+ python3-pygments <!nocheck>,
+ python3-setuptools,
+Build-Depends-Indep:
+ dh-sequence-sphinxdoc,
+ python3-sphinx
+Standards-Version: 4.6.0
+Homepage: http://www.cheetahtemplate.org/
+Vcs-Git: https://salsa.debian.org/python-team/packages/cheetah.git
+Vcs-Browser: https://salsa.debian.org/python-team/packages/cheetah
+Rules-Requires-Root: no
+
+Package: python3-cheetah
+Architecture: any
+Depends:
+ ${python3:Depends},
+ ${shlibs:Depends},
+ ${misc:Depends}
+Suggests:
+ python-cheetah-doc,
+ python3-markdown,
+ python3-memcache,
+ python3-pygments
+Description: text-based template engine and Python code generator (Python 3)
+ Cheetah can be used as a standalone templating utility or referenced as a
+ library from other Python applications. It has many potential uses, but web
+ developers looking for a viable alternative to ASP, JSP, PHP and PSP are
+ expected to be its principle user group.
+ .
+ Features:
+  * Generates HTML, SGML, XML, SQL, Postscript, form email, LaTeX, or any other
+    text-based format.
+  * Cleanly separates content, graphic design, and program code.
+  * Blends the power and flexibility of Python with a simple template language
+    that non-programmers can understand.
+  * Gives template writers full access to any Python data structure, module,
+    function, object, or method in their templates.
+  * Makes code reuse easy by providing an object-orientated interface to
+    templates that is accessible from Python code or other Cheetah templates.
+    One template can subclass another and selectively reimplement sections of
+    it.
+  * Provides a simple, yet powerful, caching mechanism that can dramatically
+    improve the performance of a dynamic website.
+  * Compiles templates into optimized, yet readable, Python code.
+ .
+ This package contains the Python 3 module.
+
+Package: python-cheetah-doc
+Architecture: all
+Multi-Arch: foreign
+Section: doc
+Depends:
+ ${misc:Depends},
+ ${sphinxdoc:Depends}
+Description: documentation for the Cheetah template engine
+ Cheetah can be used as a standalone templating utility or referenced as a
+ library from other Python applications. It has many potential uses, but web
+ developers looking for a viable alternative to ASP, JSP, PHP and PSP are
+ expected to be its principle user group.
+ .
+ This package contains documentation for the Cheetah template engine.

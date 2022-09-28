@@ -1,0 +1,30 @@
+#!/usr/bin/make -f
+
+#export DH_VERBOSE=1
+
+export DEB_BUILD_MAINT_OPTIONS = hardening=+all
+export PYBUILD_NAME=cheetah
+
+%:
+	dh $@ --buildsystem=pybuild
+
+
+execute_after_dh_auto_install-indep:
+	PYTHONPATH=$(CURDIR) $(MAKE) -i -C docs html
+
+execute_after_dh_auto_clean:
+	PYTHONPATH=$(CURDIR) $(MAKE) -i -C docs clean
+
+execute_after_dh_install:
+	# rename utils in python3-cheetah to prevent filename collisions
+	mv -v debian/python3-cheetah/usr/bin/cheetah debian/python3-cheetah/usr/bin/cheetah3
+	mv -v debian/python3-cheetah/usr/bin/cheetah-analyze debian/python3-cheetah/usr/bin/cheetah-analyze3
+	mv -v debian/python3-cheetah/usr/bin/cheetah-compile debian/python3-cheetah/usr/bin/cheetah-compile3
+	# exclude documentation file from main pkg; already present in -doc pkg (in html form)
+	find ./debian -name MondoReportDoc.txt -print -delete
+
+override_dh_auto_test:
+	PYBUILD_SYSTEM=custom PYBUILD_TEST_ARGS=" \
+		cp -va Cheetah/Tests/ImportHooksTemplates {build_dir}/Cheetah/Tests/; \
+		PATH=$(CURDIR)/bin:$$PATH python{version} {build_dir}/Cheetah/Tests/Test.py" \
+		dh_auto_test

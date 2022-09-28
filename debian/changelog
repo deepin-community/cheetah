@@ -1,0 +1,434 @@
+cheetah (3.2.6-2) unstable; urgency=medium
+
+  [ Sandro Tosi ]
+  * Use the new Debian Python Team contact name and address.
+
+  [ Helmut Grohne ]
+  * Rules:
+    + convert dh --with to B-D: dh-sequence.
+    + replace nodoc option/profile with indep condition.
+  * Control:
+    + move sphinx dependencies to B-D-I.
+    + annotate python3-markdown dependency <!nocheck>.
+  (Closes: #983112)
+
+  [ Jeroen Ploemen ]
+  * Control:
+    + mark python-pygments build-dep <!nocheck>.
+    + set maintainer to my debian.org email address.
+    + set Rules-Requires-Root: no.
+    + bump Standards-Version to 4.6.0 (from 4.5.0; no further changes).
+    + bump compat level to 13 (from 12; no further changes).
+  * Upstream metadata: add repository info.
+  * Rules:
+    + prevent installation of MondoReportDoc.txt in main pkg.
+    + make output of custom commands verbose.
+
+ -- Jeroen Ploemen <jcfp@debian.org>  Fri, 20 Aug 2021 10:11:47 +0000
+
+cheetah (3.2.6-1) unstable; urgency=medium
+
+  [ JCF Ploemen (jcfp) ]
+  * New upstream release.
+
+  [ Ondřej Nový ]
+  * d/control: Update Vcs-* fields with new Debian Python Team Salsa
+    layout.
+
+ -- JCF Ploemen (jcfp) <linux@jcf.pm>  Thu, 08 Oct 2020 06:54:00 +0000
+
+cheetah (3.2.5-1) unstable; urgency=medium
+
+  [ Sandro Tosi ]
+  * debian/python-cheetah-doc.doc-base
+    - fix doc-base-file-references-missing-file lintian error
+
+  [ JCF Ploemen (jcfp) ]
+  * New upstream release.
+  * Bump Standards-Version to 4.5.0 (from 4.4.1; no further changes).
+
+  [ Debian Janitor ]
+  * Set upstream metadata fields: Bug-Database, Bug-Submit.
+
+ -- JCF Ploemen (jcfp) <linux@jcf.pm>  Mon, 27 Jul 2020 07:56:33 -0000
+
+cheetah (3.2.4-2) unstable; urgency=medium
+
+  * Drop python2 support; Closes: #936293
+
+ -- Sandro Tosi <morph@debian.org>  Sat, 04 Apr 2020 19:24:19 -0400
+
+cheetah (3.2.4-1) unstable; urgency=medium
+
+  [ Ondřej Nový ]
+  * Use debhelper-compat instead of debian/compat.
+
+  [ JCF Ploemen (jcfp) ]
+  * New upstream release.
+  * Control:
+    + bump Standards-Version to 4.4.0 (from 4.1.4; no further changes).
+    + bump debhelper-compat level to 12 (from 11; no further changes).
+    + remove obsolete versioning of the python(3)-markdown dependencies.
+  * Copyright: update years for upstream and packaging.
+  * Rules: fix testrun during build by copying ImportHooksTemplates dir.
+  * d/tests: add needs-root for upstream Test.py, v2.
+
+ -- JCF Ploemen (jcfp) <linux@jcf.pm>  Sat, 28 Sep 2019 13:28:03 +0000
+
+cheetah (3.1.0-3) unstable; urgency=medium
+
+  [ JCF Ploemen (jcfp) ]
+  * Control:
+    + remove 'Testsuite: autopkgtest-pkg-python', replace with simple
+      test in debian/tests/control that correctly handles the uppercase
+      module name.
+    + add build-deps on python(3)-markdown and python(3)-pygments to
+      support running tests at build time.
+    + mark python-cheetah-doc multi-arch: foreign.
+    + use correct documentation package name in Suggests.
+  * d/tests: add autopkgtests for loading the module and running upstream
+      Test.py against all supported Python versions. (LP: #1677772)
+  * Rules: override dh_auto_test to use custom upstream tests system.
+  * Watch: switch to git mode, add cryptographic verification of
+    upstream signed tags.
+
+  [ Ondřej Nový ]
+  * Convert git repository from git-dpm to gbp layout
+
+ -- JCF Ploemen (jcfp) <linux@jcf.pm>  Mon, 29 Oct 2018 15:50:53 +0000
+
+cheetah (3.1.0-2) unstable; urgency=medium
+
+  * Control: move python3-sphinx from Build-Depends-Indep to Build-
+    Depends, because the former doesn't have to be satisfied when
+    invoking the 'clean' target (policy §7.7).
+
+ -- JCF Ploemen (jcfp) <linux@jcf.pm>  Sat, 02 Jun 2018 16:28:31 +0000
+
+cheetah (3.1.0-1) unstable; urgency=medium
+
+  [ Ondřej Nový ]
+  * d/control: Set Vcs-* to salsa.debian.org
+  * d/copyright: Use https protocol in Format field
+  * d/control: Remove ancient X-Python-Version field
+  * d/control: Remove ancient X-Python3-Version field
+
+  [ JCF Ploemen (jcfp) ]
+  * New upstream release:
+    + supports newer Python releases. (LP: #599308)
+  * New maintainer. (Closes: #895786)
+  * Watch: point to upstream github.
+  * Patches: remove all, obsolete.
+  * Compat: bump level to 11 (from 10).
+  * Control:
+    + sort/reorder (build-)deps.
+    + remove build-deps on cdbs, python-markdown: no longer needed.
+    + remove obsolete versioning of remaining build-deps.
+    + add python3-cheetah (Closes: #873488), python-cheetah-doc packages.
+      (Closes: #335503)
+    + add build-deps on python3-all-dev, python3-setuptools (Python 3
+      support), python3-sphinx (docs).
+    + add Testsuite: autopkgtest-pkg-python.
+    + bump Standards-Version to 4.1.4 (from 3.9.8).
+    + bump X-Python-Version to 2.7+ and set X-Python3-Version to 3.3+, as
+      supported by upstream.
+  * Rules:
+    + switch from cdbs to dh sequencer.
+    + enable all hardening.
+  * d/pydist-overrides: remove, obsolete.
+  * d/README.Debian: remove, obsolete.
+  * Lintian: override application-in-library-section and library-package-
+    name-for-application for python(3)-cheetah, the package is primarily
+    a library.
+  * Copyright: update upstream info, add myself for the packaging.
+  * Add d/cheetah3.1 as a symlink to existing d/cheetah.1.
+  * Move d/NEWS to d/python-cheetah.NEWS.
+  * d/python-cheetah.NEWS: add entry about required recompilation of
+    templates.
+
+ -- JCF Ploemen (jcfp) <linux@jcf.pm>  Mon, 14 May 2018 15:26:44 +0000
+
+cheetah (2.4.4-4) unstable; urgency=low
+
+  [ Arnaud Fontaine ]
+  * d/rules:
+    + Add --install-layout=deb to python install command to
+      install files in the proper directory, as per dh_python2 warning.
+    + Fix FTBFS due to change in CDBS 0.4.144 (cdbs_python_binary).
+      Closes: #837009.
+  * d/control:
+    + Add dh-python to Build-Depends (dh_python2 warning).
+    + Bump debhelper compat level to 10 (5 is deprecated).
+    + Bump Standards-Version to 3.9.8. No change needed.
+
+  [ Jakub Wilk ]
+  * Use canonical URIs for Vcs-* fields.
+  * Fix a typo in README.Debian.
+
+  [ Ondřej Nový ]
+  * Fixed VCS URL (https).
+
+ -- Arnaud Fontaine <arnau@debian.org>  Fri, 18 Nov 2016 12:36:43 +0900
+
+cheetah (2.4.4-3) unstable; urgency=low
+
+  * Switch to dh_python2.
+    + debian/control:
+      - Remove Build-Depends on python-support.
+      - Add X-Python-Version field.
+      - Bump cdbs Build-Depends to 0.4.90~.
+    + Add debian/pydist-overrides to avoid adding markdown as Depends as
+      it is used only for tests.
+    + Remove debian/pyversions.
+  * Add debian/source/options to ignore changes in egg-info/* to prevent
+    FTBFS if built twice. Closes: #671311.
+  * debian/copyright: update to version 1.0 of machine-readable format.
+
+ -- Arnaud Fontaine <arnau@debian.org>  Mon, 14 May 2012 10:51:26 +0900
+
+cheetah (2.4.4-2) unstable; urgency=low
+
+  * Upload to unstable.
+
+ -- Arnaud Fontaine <arnau@debian.org>  Thu, 14 Apr 2011 00:46:00 +0900
+
+cheetah (2.4.4-1) experimental; urgency=low
+
+  * New upstream release.
+    + Cheetah now officially supports python 2.7. Closes: #605422.
+      - Require python-support >= 1.0.12 as Build-Depends.
+      - Require python-all-dev >= 2.6.6-9 as Build-Depends.
+      - Require python-setuptools >= 0.6.14-5 as Build-Depends.
+  * debian/control:
+    + Bump Standards-Version to 3.9.1. No changes needed.
+  * Add debian/patches/fix_compile_with_utf8_attribute.patch:
+    + UnicodeEncodeError exception raised when an attribute is an UTF-8
+      string. Thanks to Carles Muñoz Gorriz. Closes: #584966.
+  * debian/rules:
+    + Run test suites for all Python versions during the build.
+      Closes: #606517.
+
+ -- Arnaud Fontaine <arnau@debian.org>  Sat, 25 Dec 2010 14:14:19 +0900
+
+cheetah (2.4.2.1-1) unstable; urgency=low
+
+  * New upstream release.
+    + Add python-memcache to Suggests in debian/control as the old bundled
+      memcached module has been dropped.
+    + Add debian/patches/fix_ftbfs_c_extension_python25.patch to allow
+      building the C extension on Python <= 2.5.
+  * Switch to dpkg-source 3.0 (quilt) format.
+
+ -- Arnaud Fontaine <arnau@debian.org>  Tue, 30 Mar 2010 22:59:59 +0100
+
+cheetah (2.4.1-1) unstable; urgency=low
+
+  [ Arnaud Fontaine ]
+  * New upstream release. Closes: #568787.
+    + Drop all patches as they have already been applied.
+    + Update download URL in debian/watch and debian/copyright.
+    + Add R. Tyler Ballance as copyright holder in debian/copyright as he
+      is now the upstream author.
+    + Add python-pygments to Suggests in debian/control.
+  * debian/control:
+    + Update Standards-Version to 3.8.4. No changes needed.
+    + Drop useless Replaces and Conflicts.
+    + Add ${misc:Depends} to Depends in case the result of calls debhelper
+      tools adds extra dependencies.
+    + Remove useless debian/pycompat and bump python-support minimum
+      version to 0.9.0.
+  * debian/copyright:
+    + Update copyright years.
+
+  [ Sandro Tosi ]
+  * debian/control:
+    - Switch Vcs-Browser field to viewsvn.
+
+ -- Arnaud Fontaine <arnau@debian.org>  Wed, 10 Feb 2010 02:27:47 +0000
+
+cheetah (2.0.1-2) unstable; urgency=low
+
+  [ Arnaud Fontaine ]
+  * New email address.
+  * debian/control:
+    + Update Standards-Version to 3.7.3. No changes needed.
+    + Change Section field from text to python (python extension).
+    + Build-Depends on at least python-setuptools 0.6b3 instead of
+      0.6b3-1 in order to facilitate backporting.
+
+  [ Sandro Tosi ]
+  * debian/control
+    + Uniforming Vcs-Browser field.
+
+ -- Arnaud Fontaine <arnau@debian.org>  Sat, 23 Feb 2008 12:40:22 +0000
+
+cheetah (2.0.1-1) unstable; urgency=low
+
+  [ Arnaud Fontaine ]
+  * New upstream release. Closes: #451766.
+    + Update debian/patches/02_clean_modules.patch.
+  * debian/NEWS:
+    + Fix lintian warning on the first changelog entry.
+  * debian/watch:
+    + Fix uversionmangle regex for stable versions.
+  * debian/copyright:
+    + Add package license.
+
+  [ Piotr Ożarowski ]
+  * debian/control:
+    + Add Homepage field.
+    + Rename XS-Vcs-* fields to Vcs-* (dpkg supports them now).
+
+ -- Arnaud Fontaine <arnaud@andesi.org>  Sun, 18 Nov 2007 14:59:06 +0000
+
+cheetah (2.0~rc8-1) unstable; urgency=low
+
+  [ Arnaud Fontaine ]
+  * New upstream release.
+  * Add debian/watch file.
+  * debian/copyright:
+    + Update years and maintainer.
+  * debian/control*:
+    + Add Homepage field.
+    + Add XS-Vcs-Browser field.
+    + Build-Depends on python-support >= 0.6.4.
+    + Add DPMT as uploaders.
+  * debian/rules:
+    + Remove egg stuff.
+
+  [ Piotr Ozarowski ]
+  * debian/control:
+    + Add XS-Vcs-Svn field.
+
+ -- Arnaud Fontaine <arnaud@andesi.org>  Wed, 11 Jul 2007 14:45:50 +0200
+
+cheetah (2.0~rc7-1) unstable; urgency=low
+
+  * New upstream release.
+  * Remove the interpreter line from all modules.
+  * New maintainer. Closes: #376189.
+  * Acknowledge NMU. Closes: #373265, #366759.
+  * Add debian/control.in and regenerates debian/control.
+
+ -- Arnaud Fontaine <arnaud@andesi.org>  Wed, 26 Jul 2006 22:03:15 +0200
+
+cheetah (1.0-1.1) unstable; urgency=low
+
+  [ Arnaud Fontaine ]
+  * Non-maintainer upload.
+  * Update Standards-Version to 3.7.2. No changes needed.
+  * Remove cheetah-common package.
+  * Add egg support.  Thanks to Piotr Ozarowski
+    <ozarow@gmail.com>. Closes: #366759.
+  * Remove alternatives which are no more needed since pythonX.Y-cheetah
+    are folded into python-cheetah.
+    + Remove pythonX.Y-cheetah.postinst.in and pythonX.Y-cheetah.prerm.in
+      in debian/.
+    + Remove *.links files in favor of debian/links.
+    + Remove *.manpages files in favor of debian/manpages.
+    + Clean debian/rules.
+  * New Python policy changes. Closes: #373265.
+    + Update debian/cheetah.1 and debian/README.Debian:
+    + Add debian/pyversions and debian/pycompat.
+    + debian/compat:
+      - Update debhelper compatibility to 5.
+    + debian/rules:
+      - Add DEB_PYTHON_SYSTEM=pysupport.
+    + debian/control:
+      - Update Build-Depends.
+      - Add XB-Python-Version for binary package.
+      - Add Conflicts and Replaces fields against previous revisions.
+
+  [ Raphael Hertzog ]
+  * Sponsoring upload.
+  * Improvements in the rules file. Rename egg-info directory soon enough so
+    that dh_pysupport can decide to share it.
+  * Updated README.Debian.
+
+ -- Raphael Hertzog <hertzog@debian.org>  Fri, 30 Jun 2006 19:11:25 +0200
+
+cheetah (1.0-1) unstable; urgency=low
+
+  * New upstream version.  Closes: #344977
+  * debian/NEWS, debian/README.Debian: Updated to reflect new info.
+  * debian/control, debian/rules: Dropped build support for python2.2-cheetah
+    package. Closes: #351120
+
+ -- Chad Walstrom <chewie@debian.org>  Fri,  3 Feb 2006 13:50:19 -0600
+
+cheetah (0.9.16-1) unstable; urgency=high
+
+  * debian/rules, debian/patches: Added simple-patchsys so we can
+    apply security patches.
+  * debian/patches/309648-tmpfix.patch: Kenshi Muto grabbed this one
+    from the cheetahtemplate CVS.  Upstream rewrote how imports were
+    handled, removing the need to use temp files and eliminating this
+    security breech.  Closes: #309648
+  * debian/control: Added version dependency for cdbs, required to support
+    Python 2.4.
+
+ -- Chad Walstrom <chewie@debian.org>  Sat, 21 May 2005 12:40:10 -0500
+
+cheetah (0.9.16-0) unstable; urgency=low
+
+  * New upstream.  Closes: #295957
+  * debian/cheetah.1: Dedicated the manpage to the Public Domain.
+  * debian/NEWS: Noted code incompatibility between 0.9.15 and 0.9.16.
+  * debian/pythonX.Y-cheetah.*: Replaced maintainer scripts with sed templates
+  * debian/control, debian/rules: Added python2.4-cheetah package.
+    Dropped python2.1-cheetah package.
+
+ -- Chad Walstrom <chewie@debian.org>  Tue,  5 Apr 2005 17:03:44 -0500
+
+cheetah (0.9.15-5) unstable; urgency=low
+
+  * First unstable release!
+  * debian/rules:
+    - Removed all traces of incorrect linking for python-cheetah.
+    - Excluded .arch-ids directories from cheetah-common examples
+    - Replaced entire first line of cheetah and cheetah-compile scripts
+      instead of selectively appending python version.
+  * debian/control:
+    - Cleaned up package descriptions to follow the control file style guide
+      more closely.
+    - Removed ${python:Depends}.  Causing incorrect dependencies on multiple
+      versions of Python.  You could install python2.1-cheetah only if python
+      >= 2.3 was installed.
+
+ -- Chad Walstrom <chewie@debian.org>  Tue, 30 Mar 2004 18:47:41 -0600
+
+cheetah (0.9.15-4) experimental; urgency=low
+
+  * The "I was sleeping on the job" release.
+  * Moved debian/python-cheetah.manpages to debian/cheetah-common.manpages.
+    Manpages installed in wrong package.
+  * debian/rules: Install examples in cheetah-common. No, really!  I mean it
+    this time!
+
+ -- Chad Walstrom <chewie@debian.org>  Wed, 17 Mar 2004 22:22:55 -0600
+
+cheetah (0.9.15-3) experimental; urgency=low
+
+  * Last experimental upload!  Please test and report bugs to the BTS!
+  * debian/control: (NEW) cheetah-common package for common docs, manpages,
+    and examples.  Versioned dependencies for cheetah-common were added to
+    pythonX.Y-cheetah packages.
+  * debian/rules: Cleaned up per package post-install targets.  Added linking
+    scripts for manpages and examples directories.
+  * cheetah.1: (NEW) Debian manpage for cheetah and cheetah-compile.
+  * examples directory included in cheetah-common package.
+
+ -- Chad Walstrom <chewie@debian.org>  Tue, 16 Mar 2004 12:38:08 -0600
+
+cheetah (0.9.15-2) experimental; urgency=low
+
+  * Moved update-alternatives call to *.prerm.
+
+ -- Chad Walstrom <chewie@debian.org>  Thu,  5 Feb 2004 09:46:25 -0600
+
+cheetah (0.9.15-1) experimental; urgency=low
+
+  * Initial Release.
+  * Answers the call to package cheetah-template. Closes: #135456
+
+ -- Chad Walstrom <chewie@debian.org>  Fri, 23 Jan 2004 23:54:05 -0600

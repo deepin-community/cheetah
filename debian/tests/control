@@ -1,0 +1,8 @@
+# load the module, v3
+Tests: load-module-v3
+Depends: python3-all, python3-cheetah
+
+# run upstream Test.py, v3; needs root to symlink the utils
+Tests: upstream-test-v3
+Depends: python3-all, python3-cheetah, python3-markdown, python3-pygments
+Restrictions: allow-stderr, needs-root

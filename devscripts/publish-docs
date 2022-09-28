@@ -1,0 +1,4 @@
+#! /bin/sh
+
+cd "`dirname \"$0\"`"/../../cheetahtemplate3.github.io &&
+exec git push origin master

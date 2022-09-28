@@ -1,0 +1,12 @@
+Document: cheetah-manual
+Title: Cheetah Manual
+Author: The Cheetah Development Team
+Abstract: This document is a user guide, developers manual and API
+ reference for Cheetah, a text-based template engine and Python code
+ generator. It describes the features of the standalone templating
+ utility or as referenced as a module from other Python applications.
+Section: Programming/Python
+
+Format: HTML
+Index: /usr/share/doc/python-cheetah-doc/html/index.html
+Files: /usr/share/doc/python-cheetah-doc/html/*
