@@ -69,7 +69,7 @@ class CFBase(unittest.TestCase):
         """Create the top-level directories, subdirectories and .tmpl
            files.
         """
-        self.cmd = sys.executable + " " + self.locate_cheetah('cheetah')
+        self.cmd = self.locate_cheetah('cheetah')
         cwd = os.getcwd()
         if not os.environ.get('PYTHONPATH'):
             os.environ['PYTHONPATH'] = cwd
@@ -563,7 +563,7 @@ class FileDataFill(CFBase):
         """Create the top-level directories and .tmpl
            files.
         """
-        self.cmd = sys.executable + " " + self.locate_cheetah('cheetah')
+        self.cmd = self.locate_cheetah('cheetah')
         cwd = os.getcwd()
         if not os.environ.get('PYTHONPATH'):
             os.environ['PYTHONPATH'] = cwd
