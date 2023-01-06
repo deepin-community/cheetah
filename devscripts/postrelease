@@ -2,7 +2,7 @@
 
 tag="`python setup.py --version`" &&
 
-. `dirname $0`/split.sh &&
+. `dirname $0`/split_tag.sh &&
 split_tag $tag
 
 if [ $micro -eq 0 -a $state = final ] &&
@@ -19,4 +19,4 @@ fi &&
 git checkout $tag~ ANNOUNCE.rst &&
 
 `git var GIT_EDITOR` ANNOUNCE.rst docs/news.rst Cheetah/Version.py README.rst setup.cfg SetupConfig.py &&
-exec git commit --message="Prepare for the next release" ANNOUNCE.rst docs/news.rst Cheetah/Version.py README.rst setup.cfg SetupConfig.py
+exec git commit --message="Build: Prepare for the next release" --message="[skip ci]" ANNOUNCE.rst docs/news.rst Cheetah/Version.py README.rst setup.cfg SetupConfig.py

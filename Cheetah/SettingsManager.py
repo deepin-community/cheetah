@@ -11,7 +11,7 @@ try:
     from StringIO import StringIO
 except ImportError:
     from io import StringIO
-from Cheetah.compat import PY2
+from .compat import PY2
 
 
 numberRE = re.compile(Number)
@@ -121,7 +121,8 @@ class _SettingsCollector(object):
         return self.readSettingsFromModule(module)
 
     def readSettingsFromConfigFileObj(self, inFile, convert=True):
-        """Return the settings from a config file that uses the syntax accepted by
+        """
+        Return the settings from a config file that uses the syntax accepted by
         Python's standard ConfigParser module (like Windows .ini files).
 
         NOTE:
@@ -203,7 +204,8 @@ class _SettingsCollector(object):
 
 
 class SettingsManager(_SettingsCollector):
-    """A mixin class that provides facilities for managing application settings.
+    """
+    A mixin class that provides facilities for managing application settings.
 
     SettingsManager is designed to work well with nested settings dictionaries
     of any depth.

@@ -142,8 +142,9 @@ been compiled or falls back to the Python version if not.
 
 import inspect
 from pprint import pformat
+import sys
 
-from Cheetah.compat import PY2
+from .compat import PY2
 if PY2:
     from collections import Mapping
 else:
@@ -263,7 +264,9 @@ def hasName(obj, name):
 
 
 try:
-    from Cheetah._namemapper import NotFound, valueForKey, valueForName, \
+    if getattr(sys, '_cheetah_namemapper_pure', False):
+        raise ValueError  # Not an error, just a way to skip ``_namemapper``
+    from ._namemapper import NotFound, valueForKey, valueForName, \
         valueFromSearchList, valueFromFrameOrSearchList, valueFromFrame
     C_VERSION = True
 except Exception:
@@ -378,7 +381,8 @@ def example():
         'item': 'itemval',
         'subDict': {'nestedMethod': a.method3}
     }
-    # b = 'this is local b'
+
+    b = 'this is local b'  # noqa: F841 local variable assigned but never used
 
     print(valueForKey(a.dic, 'subDict'))
     print(valueForName(a, 'dic.item'))

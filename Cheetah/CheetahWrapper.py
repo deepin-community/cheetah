@@ -7,17 +7,18 @@ import pprint
 import re
 import shutil
 import sys
+import json
 try:
     import cPickle as pickle
 except ImportError:  # PY3
     import pickle as pickle
 from optparse import OptionParser
 
-from Cheetah.Compiler import DEFAULT_COMPILER_SETTINGS
-from Cheetah.Template import Template
-from Cheetah.Utils.Misc import mkdirsWithPyInitFiles
-from Cheetah.Version import Version
-from Cheetah.compat import PY2
+from .Compiler import DEFAULT_COMPILER_SETTINGS
+from .Template import Template
+from .Utils.Misc import mkdirsWithPyInitFiles
+from .Version import Version
+from .compat import PY2
 
 optionDashesRE = re.compile(R"^-{1,2}")
 moduleNameRE = re.compile(R"^[a-zA-Z_][a-zA-Z_0-9]*$")
@@ -177,6 +178,8 @@ class CheetahWrapper(object):
             help='Pass the environment into the search list')
         pao("--pickle", action="store", dest="pickle", default="",
             help='Unpickle FILE and pass it through in the search list')
+        pao("--json", action="store", dest="json", default="",
+            help='Read from JSON FILE and pass it through in the search list')
         pao("--flat", action="store_true", dest="flat", default=False,
             help='Do not build destination subdirectories')
         pao("--nobackup", action="store_true", dest="nobackup", default=False,
@@ -224,7 +227,7 @@ Files are %s""", args, pprint.pformat(vars(opts)), files)
         if opts.print_settings:
             print()
             print('>> Available Cheetah compiler settings:')
-            from Cheetah.Compiler import _DEFAULT_COMPILER_SETTINGS
+            from .Compiler import _DEFAULT_COMPILER_SETTINGS
             listing = _DEFAULT_COMPILER_SETTINGS
             listing.sort(key=lambda _l: _l[0][0].lower())
 
@@ -250,6 +253,11 @@ Files are %s""", args, pprint.pformat(vars(opts)), files)
             unpickled = pickle.load(f)
             f.close()
             self.searchList.insert(0, unpickled)
+        if opts.json:
+            f = open(opts.json, 'r')
+            unjsoned = json.load(f)
+            f.close()
+            self.searchList.insert(0, unjsoned)
 
     ##################################################
     # COMMAND METHODS
@@ -258,7 +266,7 @@ Files are %s""", args, pprint.pformat(vars(opts)), files)
         self._compileOrFill()
 
     def fill(self):
-        from Cheetah.ImportHooks import install
+        from .ImportHooks import install
         install()
         self._compileOrFill()
 
@@ -283,7 +291,7 @@ you do have write permission to and re-run the tests.""")
             os.remove(TEST_WRITE_FILENAME)
         # @@MO: End ugly kludge.
         import unittest
-        from Cheetah.Tests import Test
+        from .Tests import Test
         verbosity = 1
         if '-q' in self.testOpts:
             verbosity = 0
@@ -321,7 +329,8 @@ you do have write permission to and re-run the tests.""")
         fprintfMessage(sys.stderr, format, *args)
 
     def error(self, format, *args):
-        """Always print a warning message to stderr and exit with an error code.
+        """
+        Always print a warning message to stderr and exit with an error code.
         """
         fprintfMessage(sys.stderr, format, *args)
         sys.exit(1)

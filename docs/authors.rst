@@ -33,4 +33,11 @@ Contributions have been made by:
 * Pierre-Yves <pyu at riseup.net>
 * Dan Vinakovsky <dvinak at gmail.com>
 * Yegor Yefremov <yegorslists at googlemail.com>
+* Andrew J. Hesford <ajh at sideband.org>
+* Victor Stinner <vstinner at python.org>
+* N Protokowicz <nicklivewire at gmail.com>
+* Enzo Conty <contact at enzoconty.dev>
+* Andrea Mennucci <mennucc1@debian.org>
+* odidev <odidev at puresoftware.com>
+* Pierre Ossman <ossman at cendio.se>
 * Oleg Broytman <phd@phdru.name>
