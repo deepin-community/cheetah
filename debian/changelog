@@ -1,3 +1,26 @@
+cheetah (3.3.0-1) unstable; urgency=medium
+
+  [ Debian Janitor ]
+  * Use secure URI in Homepage field.
+  * Update standards version to 4.6.1, no changes needed.
+
+  [ Jeroen Ploemen ]
+  * New upstream version 3.3.0
+  * Patches: remove python3.10.patch, no longer needed.
+  * Patches: refresh and expand python3-tests.patch.
+  * Copyright: bump years for upstream and packaging.
+
+ -- Jeroen Ploemen <jcfp@debian.org>  Mon, 17 Oct 2022 19:40:34 +0000
+
+cheetah (3.2.6-3) unstable; urgency=medium
+
+  * Patches: add 'python3.10', cherry-picked upstream commit to skip
+    test_import_bootlocale() on Python 3.10; by Graham Inggs, thanks.
+    (Closes: #999856)
+  * Copyright: bump packaging year.
+
+ -- Jeroen Ploemen <jcfp@debian.org>  Thu, 18 Nov 2021 09:02:44 +0000
+
 cheetah (3.2.6-2) unstable; urgency=medium
 
   [ Sandro Tosi ]

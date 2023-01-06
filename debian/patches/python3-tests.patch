@@ -1,8 +1,17 @@
 # run the `cheetah` command with the interpreter used to run this test file
 --- a/Cheetah/Tests/CheetahWrapper.py
 +++ b/Cheetah/Tests/CheetahWrapper.py
-@@ -66,7 +66,7 @@ class CFBase(unittest.TestCase):
+@@ -69,7 +69,7 @@
          """Create the top-level directories, subdirectories and .tmpl
+            files.
+         """
+-        self.cmd = self.locate_cheetah('cheetah')
++        self.cmd = sys.executable + " " + self.locate_cheetah('cheetah')
+         cwd = os.getcwd()
+         if not os.environ.get('PYTHONPATH'):
+             os.environ['PYTHONPATH'] = cwd
+@@ -563,7 +563,7 @@
+         """Create the top-level directories and .tmpl
             files.
          """
 -        self.cmd = self.locate_cheetah('cheetah')
