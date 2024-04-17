@@ -1,1 +1,12 @@
-.pc/
+*.py[co]
+*.py.bak
+*.swp
+*.so
+.eggs/
+.tox/
+CT3.egg-info/
+build
+dist
+docs/*.html
+docs/_build/
+docs/html/

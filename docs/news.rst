@@ -1,6 +1,67 @@
 News
 ====
 
+3.3.3 (2023-10-22)
+------------------
+
+Minor features:
+
+  - Protect ``import cgi`` in preparation to Python 3.13.
+
+Tests:
+
+  - Run tests with Python 3.12.
+
+CI:
+
+  - GHActions: Ensure ``pip`` only if needed
+
+    This is to work around a problem in conda with Python 3.7 -
+    it brings in wrong version of ``setuptools`` incompatible with Python 3.7.
+
+3.3.2 (2023-08-08)
+------------------
+
+Bug fixes:
+
+  - Fixed printing to stdout in ``CheetahWrapper``.
+
+CI:
+
+   - CI(GHActions): Install all Python and PyPy versions from ``conda-forge``.
+
+3.3.1 (2022-12-25)
+------------------
+
+Bug fixes:
+
+  - Fixed ``ImportHooks`` under PyPy3.
+
+Tests:
+
+  - Run tests with PyPy3.
+
+CI:
+
+  - Use ``conda`` to install older Pythons
+
+    Ubuntu >= 22 and ``setup-python`` dropped Pythons < 3.7.
+    Use ``s-weigand/setup-conda`` instead of ``setup-python``.
+
+3.3.0.post1 (2022-11-26)
+------------------------
+
+Tests:
+
+  - Run tests with Python 3.11.
+
+  - Fix DeprecationWarning: ``unittest.findTestCases()`` is deprecated. Use
+    ``unittest.TestLoader.loadTestsFromModule()`` instead.
+
+CI:
+
+  - Publish wheels at Github Releases.
+
 3.3.0 (2022-10-10)
 ------------------
 

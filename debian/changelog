@@ -1,3 +1,23 @@
+cheetah (3.3.3-1) unstable; urgency=medium
+
+  * New upstream version 3.3.3
+
+ -- Jeroen Ploemen <jcfp@debian.org>  Fri, 08 Dec 2023 11:04:07 +0000
+
+cheetah (3.3.2-1) unstable; urgency=medium
+
+  * New upstream version 3.3.2
+
+ -- Jeroen Ploemen <jcfp@debian.org>  Fri, 11 Aug 2023 07:23:22 +0000
+
+cheetah (3.3.1-1) unstable; urgency=medium
+
+  * New upstream version 3.3.1
+  * Bump Standards-Version to 4.6.2 (from 4.6.1; no further changes).
+  * Copyright: bump years.
+
+ -- Jeroen Ploemen <jcfp@debian.org>  Thu, 16 Feb 2023 08:52:52 +0000
+
 cheetah (3.3.0-1) unstable; urgency=medium
 
   [ Debian Janitor ]
