@@ -8,7 +8,7 @@ Copyright:
  2001-2008, The Cheetah Development Team: Tavis Rudd, Mike Orr,
  Chuck Esterbrook, Ian Bicking
  2009-2012, R. Tyler Croy and contributors.
- 2017-2021, Oleg Broytman and contributors.
+ 2017-2022, Oleg Broytman and contributors.
 License: MIT
  Permission to use, copy, modify, and distribute this software for any purpose
  and without fee  is hereby granted, provided that the  above copyright notice
@@ -84,7 +84,7 @@ License: LGPL-2.1+
 Files: debian/*
 Copyright:
  2006-2016, Arnaud Fontaine <arnau@debian.org>
- 2018-2022, Jeroen Ploemen <jcfp@debian.org>
+ 2018-2023, Jeroen Ploemen <jcfp@debian.org>
 License: GPL-2+
 
 Files: debian/cheetah.1

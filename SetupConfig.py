@@ -41,7 +41,7 @@ packages = ['Cheetah',
             'Cheetah.Utils',
             ]
 classifiers = [line.strip() for line in '''\
-  Development Status :: 3 - Alpha
+  Development Status :: 4 - Beta
   Intended Audience :: Developers
   Intended Audience :: System Administrators
   License :: OSI Approved :: MIT License
@@ -59,6 +59,8 @@ classifiers = [line.strip() for line in '''\
   Programming Language :: Python :: 3.8
   Programming Language :: Python :: 3.9
   Programming Language :: Python :: 3.10
+  Programming Language :: Python :: 3.11
+  Programming Language :: Python :: 3.12
   Topic :: Internet :: WWW/HTTP
   Topic :: Internet :: WWW/HTTP :: Dynamic Content
   Topic :: Internet :: WWW/HTTP :: Site Management
